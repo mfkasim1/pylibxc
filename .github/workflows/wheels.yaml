@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, macOS-10.15]
+        os: [ubuntu-latest, macOS-10.15]
 
     steps:
       - name: Checkout repo and submodules
@@ -24,6 +24,10 @@ jobs:
         uses: jwlawson/actions-setup-cmake@v1.8
         with:
           cmake-version: '3.18.x'
+
+      - name: Check CMAKE version
+        run: |
+          cmake --version
 
       - name: Build DQC
         run: |
