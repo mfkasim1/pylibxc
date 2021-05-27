@@ -38,6 +38,7 @@ class CMakeBuild(build_ext):
         cmake_args += ['-DBUILD_TESTING=OFF']
         # Python tests need third derivatives
         # cmake_args += ['-DDISABLE_KXC=OFF']  # EDIT
+        cmake_args += ['-DENABLE_XHOST=OFF']  # EDIT
 
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
