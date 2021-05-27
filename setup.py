@@ -38,7 +38,7 @@ class CMakeBuild(build_ext):
         cmake_args += ['-DBUILD_TESTING=OFF']
         # Python tests need third derivatives
         cmake_args += ['-DDISABLE_KXC=OFF']
-        cmake_args += ['-DENABLE_XHOST=OFF']  # EDIT
+        cmake_args += ['-DENABLE_XHOST=OFF']  # EDIT for generality
 
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
@@ -63,11 +63,15 @@ class CMakeBuild(build_ext):
 
 if __name__ == "__main__":
     exec(open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "pylibxc/version.py")).read())
+    
     # EDIT
     import datetime as dt
+    release = False
+    __version__ = "6.0.0.dev" + dt.date.strftime(dt.datetime.now(), "%Y%m%d%H%M%S") if not release else __version__
+    
     setup(
         name='pylibxc',
-        version="6.0.0.dev" + dt.date.strftime(dt.datetime.now(), "%Y%m%d%H%M%S"),  # EDIT from __version__
+        version=__version__,
         description=
         'PyLibxc is a python-bound C library of exchange and correlation functionals for density-functional (DFT) theory.',
         author='LibXC Authors',
