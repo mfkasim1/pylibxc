@@ -20,16 +20,6 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
 
-      - name: Install cmake
-        uses: jwlawson/actions-setup-cmake@v1.8
-        with:
-          cmake-version: '3.18.x'
-
-      - name: Check CMAKE version
-        run: |
-          cmake --version
-          which cmake
-
       - name: Install cibuildwheel
         run: |
           python -m pip install cibuildwheel==1.11.0
