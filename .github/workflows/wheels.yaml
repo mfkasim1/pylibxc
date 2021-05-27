@@ -39,8 +39,8 @@ jobs:
           python -m cibuildwheel --output-dir ../wheelhouse
           cd ..
         env:
-          CIBW_BUILD: cp3*-*
-          CIBW_BEFORE_BUILD: python -m pip install cmake; which cmake
+          CIBW_BUILD: cp37-*_x86_64  # cp3*-*
+          CIBW_BEFORE_BUILD: python -m pip install cmake; cmake --version
 
       - uses: actions/upload-artifact@v2
         with:
