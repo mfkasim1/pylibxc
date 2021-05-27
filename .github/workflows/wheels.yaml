@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-10.15]
+        os: [macOS-10.15]  # [ubuntu-latest, macOS-10.15]
 
     steps:
       - name: Checkout repo and submodules
@@ -53,7 +53,7 @@ jobs:
 
   publish:
     needs: [build_wheels]
-    runs-on: ubuntu-latest
+    runs-on: [macOS-10.15]  # ubuntu-latest
 
     steps:
       - name: Download Python wheels
@@ -68,6 +68,15 @@ jobs:
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
+      
+      - name: Preparing the distribution test
+        run: |
+          python -m pip install -i https://test.pypi.org/simple/ pylibxc
+          python -m pip install pytest
+      
+      - name: Test the distribution
+        run: |
+          pytest libxc/testsuite/pytest/
 
       - name: Publish distribution to PyPI
         if: startsWith(github.ref, 'refs/tags')
