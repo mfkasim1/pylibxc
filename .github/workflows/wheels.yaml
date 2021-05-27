@@ -36,7 +36,7 @@ jobs:
       - name: Build wheels
         run: |
           cd libxc
-          python -m cibuildwheel --output-dir wheelhouse
+          python -m cibuildwheel --output-dir ../wheelhouse
           cd ..
         env:
           CIBW_BUILD: cp3*-*
