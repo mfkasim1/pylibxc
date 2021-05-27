@@ -66,8 +66,9 @@ if __name__ == "__main__":
     
     # EDIT
     import datetime as dt
-    release = True
-    __version__ = "6.0.0.post0" if not release else __version__
+    release = False
+    date = dt.date.strftime(dt.datetime.now(), "%Y%m%d%H%M%S")
+    __version__ = "6.0.0.post" + date if not release else __version__
     
     setup(
         name='pylibxc2',
