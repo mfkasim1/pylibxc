@@ -65,7 +65,7 @@ if __name__ == "__main__":
     import datetime as dt
     setup(
         name='pylibxc',
-        version="6.0.0.dev" + dt.date.strftime("dt.datetime.now(), "%Y%m%d%H%M%S"),  # __version__,
+        version="6.0.0.dev" + dt.date.strftime("dt.datetime.now(), "%Y%m%d%H%M%S"),
         description=
         'PyLibxc is a python-bound C library of exchange and correlation functionals for density-functional (DFT) theory.',
         author='LibXC Authors',
