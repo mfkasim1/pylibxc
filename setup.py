@@ -70,7 +70,7 @@ if __name__ == "__main__":
     __version__ = "6.0.0.post0" if not release else __version__
     
     setup(
-        name='pylibxc',
+        name='pylibxc2',
         version=__version__,
         description=
         'PyLibxc is a python-bound C library of exchange and correlation functionals for density-functional (DFT) theory.',
